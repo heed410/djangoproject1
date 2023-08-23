@@ -1,0 +1,52 @@
+<div >
+    <ul style="list-style-type:none" >
+
+        <li><a href="?page=1">&lt&lt</a></li>
+        {% if active_previous_page_chunk %}
+        <li><a href="?page={{ previous_page_chunk }}">&lt</a></li>
+        {% else %}
+        <li class="uk-disabled"><a href="#"><span uk-pagination-previous></span></a></li>
+        {% endif %}
+
+        {% for key, value in display_page.items %}
+        {% if value %}
+        {% if value == now_page %}
+        <li class="uk-active"><span>{{ value }}</span></li>
+        {% else %}
+        <li><a href="?page={{ value }}">{{ value }}</a></li>
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+
+        {% if active_next_page_chunk %}
+        <li><a href="?page={{ next_page_chunk }}">&gt</a></li>
+        {% else %}
+        <li class="uk-disabled"><a href="#"><span uk-pagination-next></span></a></li>
+        {% endif %}
+
+        <li><a href="?page={{ end_page }}" >&gt&gt</a></li>
+    </ul>
+</div>
+<style>
+    a:link {
+        text-decoration: none;
+    }
+    a:visited {
+        text-decoration: none;
+    }
+    a:active {
+        text-decoration: none;
+    }
+    a:hover {
+        text-decoration: none;
+    }
+    ul {
+        display: table;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    li{
+        float : left;
+        margin-right: 2vw;
+    }
+</style>
